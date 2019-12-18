@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.8'
+}
+
+mainClassName="TODOApp"
+
+repositories {
+    mavenCentral()
+}
+
+javafx {
+    version = "13"
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+
+dependencies {
+    implementation 'com.jfoenix:jfoenix:9.0.9'
+    implementation 'org.kordamp.ikonli:ikonli-materialdesign-pack:11.3.4'
+    implementation 'org.kordamp.ikonli:ikonli-material-pack:11.3.4'
+    implementation 'org.kordamp.ikonli:ikonli-javafx:11.3.4'
+    implementation 'com.google.code.gson:gson:2.8.6'
+}

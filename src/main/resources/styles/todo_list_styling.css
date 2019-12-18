@@ -1,0 +1,12 @@
+#listHeader{
+    /*-fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #d60d4d, #32cd32);*/
+    -fx-background-color: linear-gradient(to bottom, #d60d4d, #9e2694);
+}
+
+#listName{
+    -fx-font-size: 35;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: white;
+    -jfx-focus-color: transparent;
+    -jfx-unfocus-color: transparent;
+}

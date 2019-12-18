@@ -1,0 +1,6 @@
+#taskName{
+    -fx-font-size: 20;
+    /*-fx-text-fill: white;
+    -fx-prompt-text-fill: white;*/
+    -jfx-focus-color: #d60d4d;
+}

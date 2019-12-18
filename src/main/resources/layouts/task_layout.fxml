@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import com.jfoenix.controls.JFXRippler?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import org.kordamp.ikonli.javafx.*?>
+
+<fx:root fx:id="root" type="javafx.scene.layout.BorderPane" onMouseEntered="#mouseEntered" onMouseExited="#mouseExited" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.TaskController" stylesheets="@../styles/task_styling.css">
+    <padding><Insets top="10.0" bottom="10.0" left="10.0" right="10.0" /></padding>
+    <left>
+        <JFXRippler fx:id="taskCheckbox" onMouseClicked="#tickAsCompleted" ripplerFill="#d60d4d">
+            <Label>
+                <padding><Insets top="10" right="10" bottom="10" left="10" /></padding>
+                <graphic>
+                    <FontIcon iconColor="#454545" iconLiteral="mdi-checkbox-blank-outline" iconSize="30" />
+                </graphic>
+            </Label>
+        </JFXRippler>
+    </left>
+    <center>
+        <StackPane>
+            <padding><Insets top="15.0" bottom="15.0" left="10.0" right="10.0" /></padding>
+            <JFXTextField fx:id="taskName" id="taskName" promptText="Task name" text="New Task" />
+          </StackPane>
+    </center>
+    <right>
+        <JFXRippler fx:id="deleteTask" onMouseClicked="#deleteTask" visible="false" ripplerFill="#d60d4d">
+            <Label>
+                <padding><Insets top="10" right="10" bottom="10" left="10" /></padding>
+                <graphic>
+                    <FontIcon iconColor="#454545" iconLiteral="mdi-delete" iconSize="30" />
+                </graphic>
+            </Label>
+        </JFXRippler>
+    </right>
+</fx:root>

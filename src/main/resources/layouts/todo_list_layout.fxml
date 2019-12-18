@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import com.jfoenix.controls.JFXRippler?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import org.kordamp.ikonli.javafx.*?>
+
+<fx:root fx:id="root" type="javafx.scene.layout.BorderPane" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.ListController" stylesheets="@../styles/todo_list_styling.css">
+    <top>
+        <AnchorPane id="listHeader" prefHeight="100.0">
+            <JFXTextField fx:id="listName" id="listName" promptText="List name" text="New List" AnchorPane.leftAnchor="0.0" AnchorPane.bottomAnchor="15.0">
+                <padding><Insets bottom="10.0" left="10.0" /></padding>
+            </JFXTextField>
+
+            <JFXRippler fx:id="listMenuButton" onMouseClicked="#openListMenu" ripplerFill="white" AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="15.0">
+                <Label>
+                    <padding><Insets top="10" right="10" bottom="10" left="10" /></padding>
+                    <graphic>
+                        <FontIcon iconColor="white" iconLiteral="mdi-dots-horizontal" iconSize="30" />
+                    </graphic>
+                </Label>
+            </JFXRippler>
+        </AnchorPane>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true">
+            <VBox fx:id="tasks">
+            </VBox>
+        </ScrollPane>
+    </center>
+
+    <bottom>
+        <AnchorPane>
+            <JFXRippler fx:id="addTaskButton" onMouseClicked="#addNewTask" ripplerFill="#d60d4d" AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="5.0" AnchorPane.topAnchor="5.0">
+                <Label>
+                    <padding><Insets top="10" right="10" bottom="10" left="10" /></padding>
+                    <graphic>
+                        <FontIcon iconColor="linear-gradient(to bottom, #d60d4d, #9e2694)" iconLiteral="mdi-plus" iconSize="40" />
+                    </graphic>
+                </Label>
+            </JFXRippler>
+        </AnchorPane>
+    </bottom>
+</fx:root>

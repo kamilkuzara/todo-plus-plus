@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import com.jfoenix.controls.JFXToolbar?>
+<?import com.jfoenix.controls.JFXRippler?>
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import org.kordamp.ikonli.javafx.*?>
+
+<fx:root fx:id="root" type="javafx.scene.layout.AnchorPane" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.MainPageController" stylesheets="@../styles/main_page_styling.css">
+    <BorderPane fx:id="mainContent" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <top>
+            <JFXToolbar id="mainToolbar" prefWidth="Infinity" maxWidth="Infinity">
+                <leftItems>
+                    <JFXRippler fx:id="menuButton" onMouseClicked="#menuOpenClose" ripplerFill="white">
+                        <Label>
+                            <padding><Insets top="10" right="10" bottom="10" left="10" /></padding>
+                            <graphic>
+                                <FontIcon iconColor="white" iconLiteral="mdi-menu" iconSize="30" />
+                            </graphic>
+                        </Label>
+                    </JFXRippler>
+                </leftItems>
+            </JFXToolbar>
+        </top>
+
+        <center>
+            <StackPane>
+                <Label id="mainLabel" text="Select a TODO list to view" />
+            </StackPane>
+        </center>
+    </BorderPane>
+
+    <JFXDrawer fx:id="menu" defaultDrawerSize="300.0" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+        <sidePane>
+            <AnchorPane id="menu">
+                <!--<JFXToolbar prefHeight="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <leftItems>
+                        <Label>
+                            <padding><Insets top="10.0" left="10.0" /></padding>
+                            <graphic>
+                                <FontIcon iconColor="#454545" iconLiteral="gmi-account-circle" iconSize="30"/>
+                            </graphic>
+                            Kamil Kuzara
+                        </Label>
+                    </leftItems>
+                    <rightItems>
+                        <JFXRippler fx:id="searchButton" onMouseClicked="#searchOpenClose" ripplerFill="#d60d4d">
+                            <Label>
+                                <padding><Insets top="10" right="10" bottom="10" left="10" /></padding>
+                                <graphic>
+                                    <FontIcon iconColor="#454545" iconLiteral="gmi-search" iconSize="30"/>
+                                </graphic>
+                            </Label>
+                        </JFXRippler>
+                    </rightItems>
+                </JFXToolbar>
+
+                <StackPane fx:id="search" visible="false" prefHeight="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                    <padding><Insets bottom="15.0"/></padding>
+                    <JFXTextField prefHeight="30.0" promptText="Search for TODO lists" focusColor="#d60d4d">
+                        <padding><Insets right="20.0" left="20.0"/></padding>
+                    </JFXTextField>
+                </StackPane>-->
+
+                <VBox fx:id="listOuterContainer" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="55.0" AnchorPane.bottomAnchor="46.0">
+                    <AnchorPane>
+                        <ScrollPane fitToWidth="true" AnchorPane.rightAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+                            <VBox fx:id="listContainer">
+                                <!--<JFXRippler ripplerFill="#d60d4d" alignment="BASELINE_LEFT">
+                                    <Label prefWidth="297.0">
+                                        <padding><Insets left="10.0" top="15.0" bottom="15.0"/></padding>
+                                        Example list
+                                    </Label>
+                                </JFXRippler>-->
+                            </VBox>
+                        </ScrollPane>
+                    </AnchorPane>
+
+                    <JFXRippler onMouseClicked="#createNewList" ripplerFill="#d60d4d" alignment="BASELINE_LEFT">
+                        <Label graphicTextGap="5.0" prefWidth="300.0">
+                            <padding><Insets left="10.0" top="10.0" bottom="10.0"/></padding>
+                            <graphic>
+                                <FontIcon iconColor="#454545" iconLiteral="mdi-plus" iconSize="30" />
+                            </graphic>
+                            Add a new list
+                        </Label>
+                    </JFXRippler>
+                </VBox>
+
+                <HBox AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.leftAnchor="0.0">
+                    <padding><Insets bottom="10.0" left="10.0"/></padding>
+                    <JFXRippler fx:id="gitHubLink" onMouseClicked="#openGitHub" onMouseEntered="#showClipboardPopup" onMouseExited="#hideClipboardPopup" ripplerFill="#d60d4d">
+                        <FontIcon iconColor="#454545" iconLiteral="mdi-github-box" iconSize="28"/>
+                    </JFXRippler>
+                    <JFXRippler fx:id="linkedInLink" onMouseClicked="#openLinkedIn" onMouseEntered="#showClipboardPopup" onMouseExited="#hideClipboardPopup" ripplerFill="#d60d4d">
+                        <FontIcon iconColor="#454545" iconLiteral="mdi-linkedin-box" iconSize="28"/>
+                    </JFXRippler>
+                </HBox>
+            </AnchorPane>
+        </sidePane>
+    </JFXDrawer>
+</fx:root>

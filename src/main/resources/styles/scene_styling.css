@@ -1,0 +1,16 @@
+.jfx-decorator {
+    -fx-decorator-color: #d60d4d;
+}
+
+.jfx-decorator .jfx-decorator-buttons-container {
+    -fx-background-color: -fx-decorator-color;
+}
+
+.jfx-decorator .resize-border {
+    -fx-border-color: -fx-decorator-color;
+    -fx-border-width: 0 5 5 5;
+}
+
+.jfx-decorator .jfx-decorator-title{
+    -fx-font-size: 18;
+}
