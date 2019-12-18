@@ -36,8 +36,8 @@
     <JFXDrawer fx:id="menu" defaultDrawerSize="300.0" visible="false" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0">
         <sidePane>
             <AnchorPane id="menu">
-                <!--<JFXToolbar prefHeight="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <leftItems>
+                <JFXToolbar prefHeight="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <!--<leftItems>
                         <Label>
                             <padding><Insets top="10.0" left="10.0" /></padding>
                             <graphic>
@@ -45,7 +45,7 @@
                             </graphic>
                             Kamil Kuzara
                         </Label>
-                    </leftItems>
+                    </leftItems>-->
                     <rightItems>
                         <JFXRippler fx:id="searchButton" onMouseClicked="#searchOpenClose" ripplerFill="#d60d4d">
                             <Label>
@@ -58,12 +58,12 @@
                     </rightItems>
                 </JFXToolbar>
 
-                <StackPane fx:id="search" visible="false" prefHeight="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                <StackPane fx:id="searchContainer" visible="false" prefHeight="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                     <padding><Insets bottom="15.0"/></padding>
-                    <JFXTextField prefHeight="30.0" promptText="Search for TODO lists" focusColor="#d60d4d">
+                    <JFXTextField fx:id="searchBar" prefHeight="30.0" promptText="Search for TODO lists" focusColor="#d60d4d">
                         <padding><Insets right="20.0" left="20.0"/></padding>
                     </JFXTextField>
-                </StackPane>-->
+                </StackPane>
 
                 <VBox fx:id="listOuterContainer" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="55.0" AnchorPane.bottomAnchor="46.0">
                     <AnchorPane>

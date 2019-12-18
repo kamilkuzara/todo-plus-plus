@@ -9,9 +9,11 @@ import utils.ComponentFactory;
 import com.jfoenix.controls.JFXRippler;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXPopup;
+import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.events.JFXDrawerEvent;
 import org.kordamp.ikonli.javafx.*;
 import javafx.event.EventHandler;
+import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
@@ -26,14 +28,17 @@ import java.io.IOException;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import java.util.List;
+import java.util.ArrayList;
+
 
 public class MainPageController implements Initializable{
   @FXML private AnchorPane root;
   @FXML private BorderPane mainContent;
   @FXML private JFXRippler menuButton;
   @FXML private JFXDrawer menu;
-//  @FXML private JFXRippler searchButton;
-//  @FXML private StackPane search;
+  @FXML private JFXRippler searchButton;
+  @FXML private StackPane searchContainer;
+  @FXML private JFXTextField searchBar;
   @FXML private VBox listOuterContainer;
   @FXML private VBox listContainer;
   @FXML private JFXRippler gitHubLink;
@@ -41,12 +46,15 @@ public class MainPageController implements Initializable{
 
     private JFXRippler currentList;
     private JFXPopup clipboardPopup;
+    private List<JFXRippler> allLinks;
 
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
+        allLinks = new ArrayList<>();
+
         menuButton.setMaskType(JFXRippler.RipplerMask.CIRCLE);
-//        searchButton.setMaskType(JFXRippler.RipplerMask.CIRCLE);
+        searchButton.setMaskType(JFXRippler.RipplerMask.CIRCLE);
 
         menu.setOverLayVisible(true);
 
@@ -58,6 +66,14 @@ public class MainPageController implements Initializable{
         });
 
         clipboardPopup = ComponentFactory.createClipboardPopup();
+
+        searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
+            listContainer.getChildren().clear();
+
+            for(JFXRippler listLink : allLinks)
+                if(newValue.isEmpty() || ((Label)listLink.getChildren().get(0)).getText().contains(newValue))
+                    listContainer.getChildren().add(listLink);
+        });
     }
 
     @FXML
@@ -77,20 +93,20 @@ public class MainPageController implements Initializable{
         }
     }
 
-/*    @FXML
+    @FXML
     public void searchOpenClose()
     {
-        if(!search.isVisible())
+        if(!searchContainer.isVisible())
         {
             AnchorPane.setTopAnchor(listOuterContainer, 105.0);
-            search.setVisible(true);
+            searchContainer.setVisible(true);
         }
         else
         {
-            search.setVisible(false);
+            searchContainer.setVisible(false);
             AnchorPane.setTopAnchor(listOuterContainer, 55.0);
         }
-    }*/
+    }
 
     @FXML
     public void createNewList()
@@ -124,6 +140,7 @@ public class MainPageController implements Initializable{
             todoListUI.getController().setListLink(listLink);
             todoListUI.getController().setNameChangeListener();
 
+            allLinks.add(listLink);
             listContainer.getChildren().add(listLink);
 
             Model.instance().addList(listModel);
@@ -145,15 +162,8 @@ public class MainPageController implements Initializable{
             System.out.println("Creating tasks");
         List<TaskModel> tasks = listModel.getTasks();
             System.out.println("The size of the list: " + tasks.size());
-        for(TaskModel newTask : tasks){
+        for(TaskModel newTask : tasks)
             listUI.getController().addNewTask(newTask, newTask.getName());
-                System.out.println("Task number: ");
-        }
-
-        /*for(int i = 0; i < tasks.size(); i++){
-            listUI.getController().addNewTask(tasks.get(i), tasks.get(i).getName());
-                System.out.println("Task number: " + i);
-        }*/
     }
 
     public void setCurrentList(JFXRippler currentList)
