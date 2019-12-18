@@ -27,7 +27,8 @@ public class SessionFileIO{
     private SessionFileIO()
     {
         sessionFile = new File("program_files/session.json");
-        //sessionFile = new File("/home/msi/Documents/session.json");
+        sessionFile.getParentFile().mkdirs();   // create the parent directories if they don't exist already
+
           System.out.println("Session file created in: " + sessionFile.getAbsolutePath());
         try
         {
