@@ -1,9 +1,12 @@
 package utils;
 
 import controllers.ListController;
+import ui.LoginDialogLayout;
+import ui.RegisterDialogLayout;
 import com.jfoenix.controls.JFXRippler;
 import com.jfoenix.controls.JFXPopup;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDialog;
 import org.kordamp.ikonli.javafx.FontIcon;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.StackPane;
@@ -64,5 +67,35 @@ public class ComponentFactory{
         popup.setPopupContent(container);
 
         return popup;
+    }
+
+    public static JFXPopup createLoginMenu(JFXDialog dialog)
+    {
+        JFXPopup menu = new JFXPopup();
+
+        JFXButton loginButton = new JFXButton("Log In");
+        loginButton.setAlignment(Pos.valueOf("BASELINE_LEFT"));
+        loginButton.setMaxWidth(Double.MAX_VALUE);
+        loginButton.setOnMouseClicked(event -> {
+            dialog.setContent(new LoginDialogLayout(dialog));
+            dialog.show();
+            menu.hide();
+        });
+
+        JFXButton registerButton = new JFXButton("Register");
+        registerButton.setAlignment(Pos.valueOf("BASELINE_LEFT"));
+        registerButton.setMaxWidth(Double.MAX_VALUE);
+        registerButton.setOnMouseClicked(event -> {
+            dialog.setContent(new RegisterDialogLayout(dialog));
+            dialog.show();
+            menu.hide();
+        });
+
+        VBox container = new VBox(loginButton, registerButton);
+        container.setPrefWidth(150);
+
+        menu.setPopupContent(container);
+
+        return menu;
     }
 }
