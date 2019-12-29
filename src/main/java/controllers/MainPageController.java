@@ -176,6 +176,18 @@ public class MainPageController implements Initializable{
         this.currentList = currentList;
     }
 
+    public void logUserIn(String username)
+    {
+        ( (Label)userLabel.getChildren().get(0) ).setText(username);
+        loginMenu = ComponentFactory.createLogoutMenu();
+    }
+
+    public void logUserOut()
+    {
+        ( (Label)userLabel.getChildren().get(0) ).setText("");
+        loginMenu = ComponentFactory.createLoginMenu(new JFXDialog(root, null, JFXDialog.DialogTransition.CENTER, false));
+    }
+
     @FXML
     public void showLoginMenu()
     {
