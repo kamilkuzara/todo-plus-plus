@@ -121,13 +121,23 @@ public class ComponentFactory{
         return menu;
     }
 
+    public static FlowPane createUnsuccessfulRegistrationLabel()
+    {
+        return createUnsuccessfulLabel("Registration unsuccessful");
+    }
+
     public static FlowPane createUnsuccessfulLoginLabel()
+    {
+        return createUnsuccessfulLabel("Login unsuccessful");
+    }
+
+    private static FlowPane createUnsuccessfulLabel(String text)
     {
         FlowPane labelContainer = new FlowPane();
         labelContainer.getStylesheets().add("/styles/login_unsuccessful_label_styling.css");
         labelContainer.setId("labelContainer");
 
-        Label label = new Label("Login unsuccessful");
+        Label label = new Label(text);
 
         labelContainer.getChildren().add(label);
 

@@ -7,25 +7,50 @@ public class DBManager{
     private final static String DB_USERNAME = DBCredentials.DB_USERNAME.getValue();
     private final static String DB_PASSWORD = DBCredentials.DB_PASSWORD.getValue();
 
-    /*public static void registerUser(String username, String passwordHash, String salt)
+    public static boolean registerUser(String username, String passwordHash, String salt)
     {
-      try
-      {
-          Connection dbConnection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
+        boolean registrationSuccessful = false;
 
-          PreparedStatement updateQuery = dbConnection.prepareStatement("INSERT INTO user (username, password_hash, salt) VALUES (?, ?, ?)");
+        Connection dbConnection = null;
+        PreparedStatement updateQuery = null;
 
-          updateQuery.setString(1, username);
-          updateQuery.setString(2, passwordHash);
-          updateQuery.setString(3, salt);
+        try
+        {
+            dbConnection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
 
-          updateQuery.executeUpdate();
-      }
-      catch(SQLException exception)
-      {
-          exception.printStackTrace();
-      }
-    }*/
+            updateQuery = dbConnection.prepareStatement("INSERT INTO user (username, password_hash, salt) VALUES (?, ?, ?)");
+
+            updateQuery.setString(1, username);
+            updateQuery.setString(2, passwordHash);
+            updateQuery.setString(3, salt);
+
+            updateQuery.executeUpdate();
+
+            registrationSuccessful = true;
+        }
+        catch(SQLException exception)
+        {
+            exception.printStackTrace();
+            registrationSuccessful = false;
+        }
+        finally   // close the resources
+        {
+            try
+            {
+                if(dbConnection != null)
+                    dbConnection.close();
+
+                if(updateQuery != null)
+                    updateQuery.close();
+            }
+            catch(SQLException exception)
+            {
+                exception.printStackTrace();
+            }
+        }
+
+        return registrationSuccessful;
+    }
 
     public static boolean userExists(String username)
     {

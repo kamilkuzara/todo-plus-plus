@@ -15,9 +15,25 @@ public class LoginManager{
     private static final int PASSWORD_HASH_LENGTH = 256;
     private static final int SALT_BYTE_LENGTH = 16;
 
-    /*public static boolean registerUser(String username, String password)
+    public static boolean registerUser(String username, String password, String confirmPassword)
     {
-        // check if given username does not exits in the db
+        // check if given username exits in the db
+        if(DBManager.userExists(username)){
+              System.out.println("User already exists");
+            return false;
+        }
+
+        if(password.isEmpty() || username.isEmpty())
+        {
+              System.out.println("Neither username nor password can be empty");
+            return false;
+        }
+
+        if(!password.equals(confirmPassword))
+        {
+              System.out.println("The passwords do not match");
+            return false;
+        }
 
         byte[] saltBytes = generateSalt();
         String saltString = Hex.encodeHexString(saltBytes);
@@ -25,11 +41,14 @@ public class LoginManager{
         byte[] hashedPasswordBytes = hashPassword(password.toCharArray(), saltBytes, HASHING_ITERATIONS, PASSWORD_HASH_LENGTH);
         String hashedPasswordString = Hex.encodeHexString(hashedPasswordBytes);
 
-        DBManager.registerUser(username, hashedPasswordString, saltString);
-          System.out.println(hashedPasswordString);
-
-        return true;
-    }*/
+        if(DBManager.registerUser(username, hashedPasswordString, saltString))
+        {
+              System.out.println(hashedPasswordString);
+            return true;
+        }
+        else
+            return false;
+    }
 
     public static boolean logUserIn(String username, String password)
     {

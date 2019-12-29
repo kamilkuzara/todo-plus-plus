@@ -14,23 +14,23 @@
         <Label id="heading" text="Register" />
     </heading>
     <body>
-        <VBox spacing="20.0">
+        <VBox fx:id="formContainer" spacing="20.0">
             <VBox spacing="5.0">
-                <JFXTextField promptText="example: John Smith" />
+                <JFXTextField fx:id="username" promptText="example: John Smith" />
                 <Label id="fieldLabel" text="Username" />
             </VBox>
             <VBox spacing="5.0">
-                <JFXPasswordField promptText="password" />
+                <JFXPasswordField fx:id="password" promptText="password" />
                 <Label id="fieldLabel" text="Password" />
             </VBox>
             <VBox spacing="5.0">
-                <JFXPasswordField promptText="confirm password" />
+                <JFXPasswordField fx:id="confirmPassword" promptText="confirm password" />
                 <Label id="fieldLabel" text="Confirm Password" />
             </VBox>
         </VBox>
     </body>
     <actions>
         <JFXButton fx:id="cancelButton" text="Cancel" />
-        <JFXButton fx:id="registerButton" id="registerButton" text="Register" />
+        <JFXButton fx:id="registerButton" id="registerButton" onAction="#registerUser" text="Register" />
     </actions>
 </fx:root>
