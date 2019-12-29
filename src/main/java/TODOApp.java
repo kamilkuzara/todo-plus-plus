@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
+import com.mysql.jdbc.Driver;
 
 
 public class TODOApp extends Application{
@@ -18,6 +19,15 @@ public class TODOApp extends Application{
     @Override
     public void start(Stage primaryStage) throws IOException
     {
+        // register the MYSQL database driver
+        try
+        {
+            Class.forName("com.mysql.jdbc.Driver");
+        }
+        catch(ClassNotFoundException exception)
+        {
+            exception.printStackTrace();
+        }
 
         System.setProperty("prism.lcdtext", "false"); //for better font rendering
 
@@ -31,6 +41,7 @@ public class TODOApp extends Application{
         primaryStage.setScene(scene);
 
         primaryStage.setOnCloseRequest(event -> {
+            Model.instance().logUserOut();
             Model.instance().saveToFile();
         });
 

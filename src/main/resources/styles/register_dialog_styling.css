@@ -1,0 +1,29 @@
+#root{
+    -fx-padding: 10 10 10 10;
+}
+
+#heading{
+    -fx-font-size: 20;
+}
+
+#fieldLabel{
+    -fx-font-size: 13;
+    -fx-text-fill: rgba(0, 0, 0, 0.9);
+}
+
+#registerButton{
+    -fx-background-color: #d60d4d;
+    -fx-text-fill: white;
+}
+
+.jfx-text-field{
+    -fx-text-fill: rgba(0, 0, 0, 0.95);
+    -fx-prompt-text-fill: rgba(0, 0, 0, 0.6);
+    -jfx-focus-color: #d60d4d;
+}
+
+.jfx-password-field{
+    -fx-text-fill: rgba(0, 0, 0, 0.95);
+    -fx-prompt-text-fill: rgba(0, 0, 0, 0.6);
+    -jfx-focus-color: #d60d4d;
+}

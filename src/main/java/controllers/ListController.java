@@ -52,8 +52,6 @@ public class ListController implements Initializable{
         {
             TaskUI taskUI = new TaskUI((ListUI)root);
 
-
-
             taskUI.getController().setTaskModel(taskModel);
             taskUI.getController().setName(taskName);
             taskUI.getController().setNameChangeListener();
@@ -71,7 +69,7 @@ public class ListController implements Initializable{
                 System.out.println("This task is completed");
               taskUI.getController().initCompleted();
           }
-          
+
 
                 System.out.println("The task was created: " + taskName);
         }

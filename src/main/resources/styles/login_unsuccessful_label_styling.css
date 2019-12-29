@@ -1,0 +1,10 @@
+#labelContainer{
+    -fx-background-color: rgba(214, 13, 77, 0.9); 
+    -fx-background-radius: 3 3 3 3;
+}
+
+.label{
+    -fx-font-size: 13; 
+    -fx-text-fill: white;
+    -fx-label-padding: 3 0 3 10;
+}

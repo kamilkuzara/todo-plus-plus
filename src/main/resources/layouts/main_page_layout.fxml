@@ -9,7 +9,8 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import org.kordamp.ikonli.javafx.*?>
 
-<fx:root fx:id="root" type="javafx.scene.layout.AnchorPane" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.MainPageController" stylesheets="@../styles/main_page_styling.css">
+<fx:root fx:id="root" type="javafx.scene.layout.StackPane" xmlns:fx="http://javafx.com/fxml" fx:controller="controllers.MainPageController" stylesheets="@../styles/main_page_styling.css">
+  <AnchorPane fx:id="rootPane">
     <BorderPane fx:id="mainContent" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
         <top>
             <JFXToolbar id="mainToolbar" prefWidth="Infinity" maxWidth="Infinity">
@@ -37,15 +38,16 @@
         <sidePane>
             <AnchorPane id="menu">
                 <JFXToolbar prefHeight="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <!--<leftItems>
-                        <Label>
-                            <padding><Insets top="10.0" left="10.0" /></padding>
-                            <graphic>
-                                <FontIcon iconColor="#454545" iconLiteral="gmi-account-circle" iconSize="30"/>
-                            </graphic>
-                            Kamil Kuzara
-                        </Label>
-                    </leftItems>-->
+                    <leftItems>
+                        <JFXRippler fx:id="userLabel" onMouseClicked="#showLoginMenu" ripplerFill="#d60d4d">
+                            <Label>
+                                <padding><Insets top="10" right="10" bottom="10" left="10" /></padding>
+                                <graphic>
+                                    <FontIcon iconColor="#454545" iconLiteral="gmi-account-circle" iconSize="30"/>
+                                </graphic>
+                            </Label>
+                        </JFXRippler>
+                    </leftItems>
                     <rightItems>
                         <JFXRippler fx:id="searchButton" onMouseClicked="#searchOpenClose" ripplerFill="#d60d4d">
                             <Label>
@@ -102,4 +104,5 @@
             </AnchorPane>
         </sidePane>
     </JFXDrawer>
+  </AnchorPane>
 </fx:root>

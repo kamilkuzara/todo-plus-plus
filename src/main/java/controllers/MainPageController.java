@@ -10,6 +10,7 @@ import com.jfoenix.controls.JFXRippler;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXPopup;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.events.JFXDrawerEvent;
 import org.kordamp.ikonli.javafx.*;
 import javafx.event.EventHandler;
@@ -32,7 +33,8 @@ import java.util.ArrayList;
 
 
 public class MainPageController implements Initializable{
-  @FXML private AnchorPane root;
+  @FXML private StackPane root;
+  @FXML private AnchorPane mainPane;
   @FXML private BorderPane mainContent;
   @FXML private JFXRippler menuButton;
   @FXML private JFXDrawer menu;
@@ -43,7 +45,9 @@ public class MainPageController implements Initializable{
   @FXML private VBox listContainer;
   @FXML private JFXRippler gitHubLink;
   @FXML private JFXRippler linkedInLink;
+  @FXML private JFXRippler userLabel;
 
+    private JFXPopup loginMenu;
     private JFXRippler currentList;
     private JFXPopup clipboardPopup;
     private List<JFXRippler> allLinks;
@@ -56,6 +60,9 @@ public class MainPageController implements Initializable{
         menuButton.setMaskType(JFXRippler.RipplerMask.CIRCLE);
         searchButton.setMaskType(JFXRippler.RipplerMask.CIRCLE);
 
+        clipboardPopup = ComponentFactory.createClipboardPopup();
+        loginMenu = ComponentFactory.createLoginMenu(new JFXDialog(root, null, JFXDialog.DialogTransition.CENTER, false));
+
         menu.setOverLayVisible(true);
 
         menu.setOnDrawerClosed(new EventHandler<JFXDrawerEvent>(){
@@ -64,8 +71,6 @@ public class MainPageController implements Initializable{
                 AnchorPane.setLeftAnchor(mainContent, 0.0);
             };
         });
-
-        clipboardPopup = ComponentFactory.createClipboardPopup();
 
         searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
             listContainer.getChildren().clear();
@@ -169,6 +174,25 @@ public class MainPageController implements Initializable{
     public void setCurrentList(JFXRippler currentList)
     {
         this.currentList = currentList;
+    }
+
+    public void logUserIn(String username)
+    {
+        ( (Label)userLabel.getChildren().get(0) ).setText(username);
+        loginMenu = ComponentFactory.createLogoutMenu();
+    }
+
+    public void logUserOut()
+    {
+        ( (Label)userLabel.getChildren().get(0) ).setText("");
+        loginMenu = ComponentFactory.createLoginMenu(new JFXDialog(root, null, JFXDialog.DialogTransition.CENTER, false));
+    }
+
+    @FXML
+    public void showLoginMenu()
+    {
+        loginMenu.show( userLabel, JFXPopup.PopupVPosition.TOP,
+                        JFXPopup.PopupHPosition.LEFT, 5, userLabel.getHeight() );
     }
 
     @FXML

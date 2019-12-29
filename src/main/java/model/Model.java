@@ -9,6 +9,7 @@ public class Model{
     private static Model instance;
 
     private List<ListModel> lists;
+    private User user;
     private MainPageUI mainPageUI;
 
     public static Model instance()
@@ -22,6 +23,7 @@ public class Model{
     private Model()
     {
         lists = new ArrayList<>();
+        user = null;
     }
 
     public void setMainPageUI(MainPageUI mainPageUI)
@@ -55,5 +57,23 @@ public class Model{
     public void saveToFile()
     {
         JSONParser.saveToJSON(lists);
+    }
+
+    public void logUserIn(User user)
+    {
+        this.user = user;
+        mainPageUI.getController().logUserIn(user.getUsername());
+          System.out.println("Successfully logged in");
+    }
+
+    public void logUserOut()
+    {
+        // TODO: here the database records of the user should be updated
+
+        if(user != null)
+            user = null;
+
+        mainPageUI.getController().logUserOut();
+          System.out.println("Successfully logged out");
     }
 }

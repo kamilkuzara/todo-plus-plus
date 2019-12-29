@@ -1,11 +1,16 @@
 package utils;
 
+import model.Model;
 import controllers.ListController;
+import ui.LoginDialogLayout;
+import ui.RegisterDialogLayout;
 import com.jfoenix.controls.JFXRippler;
 import com.jfoenix.controls.JFXPopup;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDialog;
 import org.kordamp.ikonli.javafx.FontIcon;
 import javafx.scene.layout.VBox;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Paint;
@@ -64,5 +69,78 @@ public class ComponentFactory{
         popup.setPopupContent(container);
 
         return popup;
+    }
+
+    public static JFXPopup createLoginMenu(JFXDialog dialog)
+    {
+        JFXPopup menu = new JFXPopup();
+
+        JFXButton loginButton = new JFXButton("Log In");
+        loginButton.setAlignment(Pos.valueOf("BASELINE_LEFT"));
+        loginButton.setMaxWidth(Double.MAX_VALUE);
+        loginButton.setOnMouseClicked(event -> {
+            dialog.setContent(new LoginDialogLayout(dialog));
+            dialog.show();
+            menu.hide();
+        });
+
+        JFXButton registerButton = new JFXButton("Register");
+        registerButton.setAlignment(Pos.valueOf("BASELINE_LEFT"));
+        registerButton.setMaxWidth(Double.MAX_VALUE);
+        registerButton.setOnMouseClicked(event -> {
+            dialog.setContent(new RegisterDialogLayout(dialog));
+            dialog.show();
+            menu.hide();
+        });
+
+        VBox container = new VBox(loginButton, registerButton);
+        container.setPrefWidth(150);
+
+        menu.setPopupContent(container);
+
+        return menu;
+    }
+
+    public static JFXPopup createLogoutMenu()
+    {
+        JFXPopup menu = new JFXPopup();
+
+        JFXButton logoutButton = new JFXButton("Log Out");
+        logoutButton.setAlignment(Pos.valueOf("BASELINE_LEFT"));
+        logoutButton.setMaxWidth(Double.MAX_VALUE);
+        logoutButton.setOnMouseClicked(event -> {
+            menu.hide();
+            Model.instance().logUserOut();
+        });
+
+        VBox container = new VBox(logoutButton);
+        container.setPrefWidth(150);
+
+        menu.setPopupContent(container);
+
+        return menu;
+    }
+
+    public static FlowPane createUnsuccessfulRegistrationLabel()
+    {
+        return createUnsuccessfulLabel("Registration unsuccessful");
+    }
+
+    public static FlowPane createUnsuccessfulLoginLabel()
+    {
+        return createUnsuccessfulLabel("Login unsuccessful");
+    }
+
+    private static FlowPane createUnsuccessfulLabel(String text)
+    {
+        FlowPane labelContainer = new FlowPane();
+        labelContainer.getStylesheets().add("/styles/login_unsuccessful_label_styling.css");
+        labelContainer.setId("labelContainer");
+
+        Label label = new Label(text);
+
+        labelContainer.getChildren().add(label);
+
+        return labelContainer;
     }
 }

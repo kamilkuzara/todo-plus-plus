@@ -4,10 +4,10 @@ import controllers.MainPageController;
 import model.Model;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import java.io.IOException;
 
-public class MainPageUI extends AnchorPane{
+public class MainPageUI extends StackPane{
   private MainPageController mainPageController;
 
   public MainPageUI() throws IOException
