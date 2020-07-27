@@ -162,6 +162,11 @@ public class MainPageController implements Initializable{
         }
     }
 
+    public void deleteList(JFXRippler listLink)
+    {
+        allLinks.remove(listLink);
+    }
+
     private void createNewTasks(ListModel listModel, ListUI listUI)
     {
             System.out.println("Creating tasks");

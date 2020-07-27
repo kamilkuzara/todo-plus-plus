@@ -100,6 +100,8 @@ public class ListController implements Initializable{
         VBox links = (VBox)listLink.getParent();
         links.getChildren().remove(listLink);
 
+        ((ListUI)root).getMainPage().getController().deleteList(listLink);
+
         ((ListUI)root).getMainPage().getController().setCurrentList(null);
     }
 
