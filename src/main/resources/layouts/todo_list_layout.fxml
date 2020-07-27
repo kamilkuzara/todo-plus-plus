@@ -26,15 +26,12 @@
     </top>
 
     <center>
-        <ScrollPane fitToWidth="true">
-            <VBox fx:id="tasks">
-            </VBox>
-        </ScrollPane>
-    </center>
-
-    <bottom>
         <AnchorPane>
-            <JFXRippler fx:id="addTaskButton" onMouseClicked="#addNewTask" ripplerFill="#d60d4d" AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="5.0" AnchorPane.topAnchor="5.0">
+            <ScrollPane fitToWidth="true" AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="0.0">
+                <VBox fx:id="tasks">
+                </VBox>
+            </ScrollPane>
+            <JFXRippler fx:id="addTaskButton" onMouseClicked="#addNewTask" ripplerFill="#d60d4d" AnchorPane.rightAnchor="20.0" AnchorPane.bottomAnchor="5.0">
                 <Label>
                     <padding><Insets top="10" right="10" bottom="10" left="10" /></padding>
                     <graphic>
@@ -43,5 +40,5 @@
                 </Label>
             </JFXRippler>
         </AnchorPane>
-    </bottom>
+    </center>
 </fx:root>

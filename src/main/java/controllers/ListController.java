@@ -23,6 +23,7 @@ public class ListController implements Initializable{
   @FXML private BorderPane root;
   @FXML private JFXTextField listName;
   @FXML private JFXRippler listMenuButton;
+  @FXML private JFXRippler addTaskButton;
   @FXML private VBox tasks;
 
     private JFXPopup listMenu;
@@ -32,6 +33,8 @@ public class ListController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
+        addTaskButton.setMaskType(JFXRippler.RipplerMask.CIRCLE);
+
         listMenuButton.setMaskType(JFXRippler.RipplerMask.CIRCLE);
         listMenu = ComponentFactory.createListMenu(this);
     }
