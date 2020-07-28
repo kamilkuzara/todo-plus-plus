@@ -4,6 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.geometry.*?>
 <?import com.jfoenix.controls.JFXRippler?>
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import org.kordamp.ikonli.javafx.*?>
 
@@ -31,14 +32,12 @@
                 <VBox fx:id="tasks">
                 </VBox>
             </ScrollPane>
-            <JFXRippler fx:id="addTaskButton" onMouseClicked="#addNewTask" ripplerFill="#d60d4d" AnchorPane.rightAnchor="20.0" AnchorPane.bottomAnchor="5.0">
-                <Label>
-                    <padding><Insets top="10" right="10" bottom="10" left="10" /></padding>
-                    <graphic>
-                        <FontIcon iconColor="linear-gradient(to bottom, #d60d4d, #9e2694)" iconLiteral="mdi-plus" iconSize="40" />
-                    </graphic>
-                </Label>
-            </JFXRippler>
+            <JFXButton fx:id="addTaskButton" onMouseClicked="#addNewTask" AnchorPane.rightAnchor="20.0" AnchorPane.bottomAnchor="10.0">
+                <padding><Insets top="10" right="10" bottom="10" left="10" /></padding>
+                <graphic>
+                    <FontIcon iconColor="white" iconLiteral="mdi-plus" iconSize="40" />
+                </graphic>
+            </JFXButton>
         </AnchorPane>
     </center>
 </fx:root>

@@ -10,3 +10,10 @@
     -jfx-focus-color: transparent;
     -jfx-unfocus-color: transparent;
 }
+
+#addTaskButton{
+    -fx-background-color: linear-gradient(to bottom, #d60d4d, #9e2694);
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow( gaussian /*blur type*/, rgba(0,0,0,0.7) /*blur colour*/, 10, 0, 0 /*x-axis offset*/, 3 /*y-axis offset*/ ); 
+            /*for more info, check out: https://stackoverflow.com/questions/54844351/javafx-dropshadow-css-what-do-the-parameters-mean-how-to-implement-width-and-h */
+}
