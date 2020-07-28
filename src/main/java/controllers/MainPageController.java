@@ -79,6 +79,8 @@ public class MainPageController implements Initializable{
                 if(newValue.isEmpty() || ((Label)listLink.getChildren().get(0)).getText().contains(newValue))
                     listContainer.getChildren().add(listLink);
         });
+
+        menuOpenClose();
     }
 
     @FXML
