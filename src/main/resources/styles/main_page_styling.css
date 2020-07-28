@@ -16,3 +16,44 @@
 .scroll-pane{
     -fx-background-color: #f2f2f2;;
 }
+
+.scroll-bar{
+    -fx-background-color: transparent;
+    -fx-pref-width: 8px;
+}
+
+.scroll-bar:hover{
+    -fx-pref-width: 11px;
+}
+
+.scroll-bar:pressed{
+    -fx-pref-width: 11px;
+}
+
+.scroll-bar .thumb{
+    -fx-background-radius: 20;
+}
+
+.scroll-bar .thumb:pressed{
+    -fx-background-color: rgba(214, 13, 77, 0.9) /*same as #d60d4d only with opacity*/;
+}
+
+.scroll-bar .increment-button{
+    -fx-background-color:transparent;
+    -fx-padding: 0;
+}
+
+.scroll-bar .increment-arrow{
+    -fx-shape: "";
+    -fx-padding: 0;
+}
+
+.scroll-bar .decrement-button{
+    -fx-background-color:transparent;
+    -fx-padding: 0;
+}
+
+.scroll-bar .decrement-arrow{
+    -fx-shape: "";
+    -fx-padding: 0;
+}

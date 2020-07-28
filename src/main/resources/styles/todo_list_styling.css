@@ -17,3 +17,44 @@
     -fx-effect: dropshadow( gaussian /*blur type*/, rgba(0,0,0,0.7) /*blur colour*/, 10, 0, 0 /*x-axis offset*/, 3 /*y-axis offset*/ ); 
             /*for more info, check out: https://stackoverflow.com/questions/54844351/javafx-dropshadow-css-what-do-the-parameters-mean-how-to-implement-width-and-h */
 }
+
+.scroll-bar{
+    -fx-background-color: transparent;
+    -fx-pref-width: 10px;
+}
+
+.scroll-bar:hover{
+    -fx-pref-width: 13px;
+}
+
+.scroll-bar:pressed{
+    -fx-pref-width: 13px;
+}
+
+.scroll-bar .thumb{
+    -fx-background-radius: 20;
+}
+
+.scroll-bar .thumb:pressed{
+    -fx-background-color: rgba(214, 13, 77, 0.9) /*same as #d60d4d only with opacity*/;
+}
+
+.scroll-bar .increment-button{
+    -fx-background-color:transparent;
+    -fx-padding: 0;
+}
+
+.scroll-bar .increment-arrow{
+    -fx-shape: "";
+    -fx-padding: 0;
+}
+
+.scroll-bar .decrement-button{
+    -fx-background-color:transparent;
+    -fx-padding: 0;
+}
+
+.scroll-bar .decrement-arrow{
+    -fx-shape: "";
+    -fx-padding: 0;
+}
