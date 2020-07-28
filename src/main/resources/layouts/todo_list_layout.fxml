@@ -32,7 +32,7 @@
                 <VBox fx:id="tasks">
                 </VBox>
             </ScrollPane>
-            <JFXButton fx:id="addTaskButton" onMouseClicked="#addNewTask" AnchorPane.rightAnchor="20.0" AnchorPane.bottomAnchor="10.0">
+            <JFXButton fx:id="addTaskButton" onMouseClicked="#addNewTask" AnchorPane.rightAnchor="25.0" AnchorPane.bottomAnchor="20.0">
                 <padding><Insets top="10" right="10" bottom="10" left="10" /></padding>
                 <graphic>
                     <FontIcon iconColor="white" iconLiteral="mdi-plus" iconSize="40" />
