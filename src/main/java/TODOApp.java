@@ -36,7 +36,7 @@ public class TODOApp extends Application{
 	      JFXDecorator jfxDecorator = new JFXDecorator(primaryStage, mainPageUI, false, true, true);
         jfxDecorator.setCustomMaximize(true);
         jfxDecorator.setTitle("TODO++");
-        Scene scene = new Scene(jfxDecorator, 1200, 600);
+        Scene scene = new Scene(jfxDecorator, 1200, 800);
         scene.getStylesheets().add(getClass().getResource("/styles/scene_styling.css").toExternalForm());
         primaryStage.setScene(scene);
 
