@@ -14,12 +14,15 @@ import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.events.JFXDrawerEvent;
 import org.kordamp.ikonli.javafx.*;
 import javafx.event.EventHandler;
+import javafx.application.Platform;
+import javafx.collections.ListChangeListener;
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -46,6 +49,7 @@ public class MainPageController implements Initializable{
   @FXML private JFXRippler gitHubLink;
   @FXML private JFXRippler linkedInLink;
   @FXML private JFXRippler userLabel;
+  @FXML private ScrollPane listScrollPane;
 
     private JFXPopup loginMenu;
     private JFXRippler currentList;
@@ -78,6 +82,14 @@ public class MainPageController implements Initializable{
             for(JFXRippler listLink : allLinks)
                 if(newValue.isEmpty() || ((Label)listLink.getChildren().get(0)).getText().contains(newValue))
                     listContainer.getChildren().add(listLink);
+        });
+
+        listContainer.getChildren().addListener(new ListChangeListener<Node>() {
+            @Override
+            public void onChanged(Change<? extends Node> change) {
+                if(change.next() && change.wasAdded())
+                        Platform.runLater(() -> listScrollPane.setVvalue(1.0));
+            }
         });
 
         menuOpenClose();

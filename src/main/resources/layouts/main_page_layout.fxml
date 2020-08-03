@@ -69,7 +69,7 @@
 
                 <VBox fx:id="listOuterContainer" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="55.0" AnchorPane.bottomAnchor="46.0">
                     <AnchorPane>
-                        <ScrollPane fitToWidth="true" AnchorPane.rightAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+                        <ScrollPane fx:id="listScrollPane" fitToWidth="true" AnchorPane.rightAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0">
                             <VBox fx:id="listContainer">
                                 <!--<JFXRippler ripplerFill="#d60d4d" alignment="BASELINE_LEFT">
                                     <Label prefWidth="297.0">

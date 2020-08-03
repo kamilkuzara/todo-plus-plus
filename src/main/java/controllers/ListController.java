@@ -11,7 +11,11 @@ import javafx.scene.layout.VBox;
 import com.jfoenix.controls.JFXRippler;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXPopup;
+import javafx.application.Platform;
+import javafx.collections.ListChangeListener;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -23,6 +27,7 @@ public class ListController implements Initializable{
   @FXML private BorderPane root;
   @FXML private JFXTextField listName;
   @FXML private JFXRippler listMenuButton;
+  @FXML private ScrollPane listScrollPane;
   @FXML private VBox tasks;
 
     private JFXPopup listMenu;
@@ -34,6 +39,14 @@ public class ListController implements Initializable{
     {
         listMenuButton.setMaskType(JFXRippler.RipplerMask.CIRCLE);
         listMenu = ComponentFactory.createListMenu(this);
+
+        tasks.getChildren().addListener(new ListChangeListener<Node>() {
+            @Override
+            public void onChanged(Change<? extends Node> change) {
+                if(change.next() && change.wasAdded())
+                        Platform.runLater(() -> listScrollPane.setVvalue(1.0));
+            }
+        });
     }
 
     @FXML
@@ -63,15 +76,14 @@ public class ListController implements Initializable{
                 listModel.addTask(taskModel);
             }
 
-            System.out.println("Task completed: " + taskModel.isCompleted());
-          if(taskModel.isCompleted())
-          {
-                System.out.println("This task is completed");
-              taskUI.getController().initCompleted();
-          }
+              System.out.println("Task completed: " + taskModel.isCompleted());
+            if(taskModel.isCompleted())
+            {
+                  System.out.println("This task is completed");
+                taskUI.getController().initCompleted();
+            }
 
-
-                System.out.println("The task was created: " + taskName);
+              System.out.println("The task was created: " + taskName);
         }
         catch(IOException exception)
         {
