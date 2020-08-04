@@ -11,6 +11,13 @@
     -jfx-unfocus-color: transparent;
 }
 
+#placeholderLabel{
+    -fx-text-fill: black;
+    -fx-font-size: 20;
+    -fx-label-padding: 0 0 0 20;
+    -fx-opacity: 0.6;
+}
+
 #addTaskButton{
     -fx-background-color: linear-gradient(to bottom, #d60d4d, #9e2694);
     -fx-background-radius: 5;
