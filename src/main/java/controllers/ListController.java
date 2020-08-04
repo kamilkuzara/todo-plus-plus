@@ -6,6 +6,7 @@ import model.ListModel;
 import model.TaskModel;
 import model.Model;
 import utils.ComponentFactory;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import com.jfoenix.controls.JFXRippler;
@@ -29,6 +30,7 @@ public class ListController implements Initializable{
   @FXML private JFXRippler listMenuButton;
   @FXML private ScrollPane listScrollPane;
   @FXML private VBox tasks;
+  @FXML private StackPane listPlaceholder;
 
     private JFXPopup listMenu;
     private JFXRippler listLink;
@@ -83,6 +85,14 @@ public class ListController implements Initializable{
                 taskUI.getController().initCompleted();
             }
 
+            // after adding the task, check if it's the only one in the list
+            // if it is, hide the placeholder and make the list itself visible
+            if(tasks.getChildren().size() == 1)
+            {
+                listPlaceholder.setVisible(false);
+                listScrollPane.setVisible(true);
+            }
+
               System.out.println("The task was created: " + taskName);
         }
         catch(IOException exception)
@@ -120,6 +130,14 @@ public class ListController implements Initializable{
     public void deleteTask(TaskUI taskToDelete)
     {
         tasks.getChildren().remove(taskToDelete);
+
+        // after deleting the task, check if it was the last one,
+        // if so, then hide the list and show the placeholder
+        if(tasks.getChildren().size() == 0)
+        {
+            listScrollPane.setVisible(false);
+            listPlaceholder.setVisible(true);
+        }
     }
 
     public void setListLink(JFXRippler listLink)

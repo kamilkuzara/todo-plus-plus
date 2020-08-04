@@ -28,7 +28,10 @@
 
     <center>
         <AnchorPane>
-            <ScrollPane fx:id="listScrollPane" fitToWidth="true" AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="0.0">
+            <StackPane fx:id="listPlaceholder" AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="0.0">
+                <Label id="placeholderLabel" text="This list is empty! Add a new task" />
+            </StackPane>
+            <ScrollPane fx:id="listScrollPane" visible="false" fitToWidth="true" AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="0.0">
                 <VBox fx:id="tasks">
                 </VBox>
             </ScrollPane>
